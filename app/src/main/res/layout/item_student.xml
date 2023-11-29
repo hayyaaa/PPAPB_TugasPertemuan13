@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp" >
+
+        <ImageView
+            android:id="@+id/img_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/baseline_person_24" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/img_icon"
+            android:layout_marginLeft="20dp"
+            android:text="Nama"
+            android:fontFamily="@font/poppins_bold"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/txt_jurusan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txt_name"
+            android:layout_marginTop="5dp"
+            android:layout_alignLeft="@id/txt_name"
+            android:text="Jurusan"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/baseline_edit_24"
+            android:layout_alignParentRight="true"/>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/grey"
+            android:layout_below="@id/img_icon"/>
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

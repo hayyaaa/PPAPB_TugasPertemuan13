@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddActivity"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginStart="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:src="@drawable/baseline_arrow_back_24" />
+
+    <TextView
+        android:id="@+id/txt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        style="@style/Title"
+        android:text="Tambah Data Mahasiswa"
+        android:fontFamily="@font/poppins_bold" />
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/baseline_person_24"
+        android:layout_marginBottom="20dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/add_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/hint"
+            android:hint="Nama"
+            android:background="@drawable/bg_edt_txt"
+            android:paddingVertical="7dp"
+            android:paddingStart="15dp" />
+
+        <EditText
+            android:id="@+id/add_nim"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/hint"
+            android:hint="NIM"
+            android:background="@drawable/bg_edt_txt"
+            android:paddingVertical="7dp"
+            android:paddingStart="15dp" />
+
+        <EditText
+            android:id="@+id/add_jurusan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/hint"
+            android:hint="Jurusan"
+            android:background="@drawable/bg_edt_txt"
+            android:paddingVertical="7dp"
+            android:paddingStart="15dp" />
+
+        <EditText
+            android:id="@+id/add_alamat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/hint"
+            android:hint="Alamat"
+            android:background="@drawable/bg_edt_txt"
+            android:paddingVertical="7dp"
+            android:paddingStart="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/btn_batal"
+                style="@style/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="Batal" />
+
+            <Button
+                android:id="@+id/btn_add"
+                style="@style/button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Tambah" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
