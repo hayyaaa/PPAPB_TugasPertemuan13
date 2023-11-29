@@ -16,8 +16,10 @@ import java.nio.file.Files.delete
 
 class DetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailBinding
+
     // mendeklarasikan variabel untuk menyimpan data mahasiswa
     lateinit var id: String
+
     // mendeklarasikan variabel untuk TextView pada dialog konfirm
     private lateinit var cancelTxt: TextView
     private lateinit var yesTxt: TextView
@@ -28,10 +30,12 @@ class DetailActivity : AppCompatActivity() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // mendapatkan data yg dikirim dr intent
         val data = intent.extras
         id = data?.getString("id").toString()
 
         with(binding) {
+            // data yang akan ditampilkan
             namaMhs.text = "${data?.getString("nama")}"
             nimMhs.text = "${data?.getString("nim")}"
             jurusanMhs.text = "${data?.getString("jurusan")}"
@@ -39,7 +43,7 @@ class DetailActivity : AppCompatActivity() {
 
             // membuat objek Dialog untuk konfirm penghapusan
             val dialog = Dialog(this@DetailActivity)
-            btnKembali.setOnClickListener {
+            btnHapus.setOnClickListener {
                 // menampilkna dialog konfirm penghapusan
                 dialog.setContentView(R.layout.dialog_delete)
                 dialog.window!!.setLayout(
@@ -71,6 +75,7 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    // fungsi untuk menghapus data mahasiswa dari firestore
     private fun deleteStudent(id: String) {
         studentCollectionRef.document(id).delete()
             .addOnFailureListener {
@@ -78,132 +83,3 @@ class DetailActivity : AppCompatActivity() {
             }
     }
 }
-
-//class DetailActivity : AppCompatActivity() {
-//    private lateinit var binding: ActivityDetailBinding
-//    // mendeklarasikan variabel untuk menyimpan data mahasiswa
-//    lateinit var id: String
-//    // mendeklarasikan variabel untuk TextView pada dialog konfirm
-//    private lateinit var cancelTxt: TextView
-//    private lateinit var yesTxt: TextView
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        binding = ActivityDetailBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        val data = intent.extras
-//        id = data?.getString("id").toString()
-//
-//        with(binding) {
-//            namaMhs.text = "${data?.getString("nama")}"
-//            nimMhs.text = "${data?.getString("nim")}"
-//            jurusanMhs.text = "${data?.getString("jurusan")}"
-//            alamatMhs.text = "${data?.getString("alamat")}"
-//
-//            // membuat objek Dialog untuk konfirm penghapusan
-//            val dialog = Dialog(this@DetailActivity)
-//            btnKembali.setOnClickListener {
-//                // menampilkna dialog konfirm penghapusan
-//                dialog.setContentView(R.layout.dialog_delete)
-//                dialog.window!!.setLayout(
-//                    ViewGroup.LayoutParams.MATCH_PARENT,
-//                    ViewGroup.LayoutParams.WRAP_CONTENT
-//                )
-//                dialog.setCancelable(false)
-//                dialog.window!!.attributes.gravity = Gravity.BOTTOM
-//                dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//
-//                cancelTxt = dialog.findViewById(R.id.txt_cancel)
-//                yesTxt = dialog.findViewById(R.id.txt_yes)
-//
-//                cancelTxt.setOnClickListener {
-//                    dialog.dismiss()
-//                }
-//
-//                yesTxt.setOnClickListener {
-//                    deleteStudent(id)
-//                    finish()
-//                }
-//
-//                dialog.show()
-//            }
-//
-//            btnBack.setOnClickListener {
-//                onBackPressed()
-//            }
-//        }
-//    }
-//
-//    private fun deleteStudent(id: String) {
-//        studentCollectionRef.document(id).delete()
-//            .addOnFailureListener {
-//                Log.d("MainActivity", "Error deleting student : ", it)
-//            }
-//    }
-//}
-
-//class DetailActivity : AppCompatActivity() {
-//    private lateinit var binding: ActivityDetailBinding
-//    // mendeklarasikan variabel untuk menyimpan data mahasiswa
-//    lateinit var student: Student
-//    // mendeklarasikan variabel untuk TextView pada dialog konfirm
-//    private lateinit var cancelTxt: TextView
-//    private lateinit var yesTxt: TextView
-//
-//    override fun onCreate(savedInstanceState: Bundle?) {
-//        super.onCreate(savedInstanceState)
-//
-//        binding = ActivityDetailBinding.inflate(layoutInflater)
-//        setContentView(binding.root)
-//
-//        val data = intent.extras
-//
-//        with(binding) {
-//            namaMhs.text = "${data?.getString("nama")}"
-//            nimMhs.text = "${data?.getString("nim")}"
-//            jurusanMhs.text = "${data?.getString("jurusan")}"
-//            alamatMhs.text = "${data?.getString("alamat")}"
-//
-//            // membuat objek Dialog untuk konfirm penghapusan
-//            val dialog = Dialog(this@DetailActivity)
-//            btnKembali.setOnClickListener {
-//                // menampilkna dialog konfirm penghapusan
-//                dialog.setContentView(R.layout.dialog_delete)
-//                dialog.window!!.setLayout(
-//                    ViewGroup.LayoutParams.MATCH_PARENT,
-//                    ViewGroup.LayoutParams.WRAP_CONTENT
-//                )
-//                dialog.setCancelable(false)
-//                dialog.window!!.attributes.gravity = Gravity.BOTTOM
-//                dialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//
-//                cancelTxt = dialog.findViewById(R.id.txt_cancel)
-//                yesTxt = dialog.findViewById(R.id.txt_yes)
-//
-//                cancelTxt.setOnClickListener {
-//                    dialog.dismiss()
-//                }
-//
-//                yesTxt.setOnClickListener {
-//                    deleteStudent(student)
-//                    finish()
-//                }
-//
-//                dialog.show()
-//            }
-//
-//            btnBack.setOnClickListener {
-//                onBackPressed()
-//            }
-//        }
-//    }
-//
-//    private fun deleteStudent(student: Student) {
-//        studentCollectionRef.document(student.id).delete()
-//            .addOnFailureListener {
-//                Log.d("MainActivity", "Error deleting student : ", it)
-//            }
-//    }
-//}

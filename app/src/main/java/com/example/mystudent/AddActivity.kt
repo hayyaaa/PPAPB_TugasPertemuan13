@@ -21,11 +21,13 @@ class AddActivity : AppCompatActivity() {
             }
 
             btnAdd.setOnClickListener {
+                // mengambil nilai yang diinputkan
                 val nama = addNama.text.toString()
                 val nim = addNim.text.toString()
                 val jurusan = addJurusan.text.toString()
                 val alamat = addAlamat.text.toString()
 
+                // membuat objek baru
                 val newStudent = Student(nama = nama, nim = nim, jurusan = jurusan, alamat = alamat)
                 addStudent(newStudent)
 
@@ -40,6 +42,7 @@ class AddActivity : AppCompatActivity() {
         }
     }
 
+    // fungsi untuk menambahkan data mahasiswa ke firestore
     private fun addStudent(student: Student) {
         MainActivity.studentCollectionRef.add(student).addOnFailureListener {
             Log.d("MainActivity", "Error adding student : ", it)

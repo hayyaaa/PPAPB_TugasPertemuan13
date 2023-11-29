@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mystudent.databinding.ItemStudentBinding
 
+// membuat alias untuk tipe data fungsi OnClickUpdate
 typealias onClickUpdate = (Student) -> Unit
 
 class StudentAdapter(private val listStudents: List<Student>,private val onClickUpdate : onClickUpdate):

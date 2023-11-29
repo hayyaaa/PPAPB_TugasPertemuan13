@@ -13,6 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
 
+    // membuat companion object berfungsi untuk membuat objek yg digunakan untuk mengelola komunikasi dengan firebase
     companion object{
         val firestore = FirebaseFirestore.getInstance()
         val studentListLiveData: MutableLiveData<List<Student>>
@@ -39,6 +40,7 @@ class MainActivity : AppCompatActivity() {
         getAllStudents()
     }
 
+    // fungsi untuk mendapatkan data mahasiswa yang sudah dibuat
     private fun getAllStudents() {
         studentCollectionRef.addSnapshotListener { snapshots, error ->
             if (error != null) {
@@ -61,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                 studentListLiveData.postValue(students)
             }
 
+            // setting adapter dan layout manager pada recycler view
             with(binding) {
                 rvStudents.apply {
                     layoutManager = LinearLayoutManager(context)
@@ -69,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    // fungsi untuk mengamati perubahan dari data mahasiswa
     private fun observeStudents() {
         studentListLiveData.observe(this) { students ->
             val adapter = StudentAdapter(students) { student ->
@@ -78,15 +82,4 @@ class MainActivity : AppCompatActivity() {
             binding.rvStudents.adapter = adapter
         }
     }
-
-
-//    private fun observeStudents() {
-//        studentListLiveData.observe(this) { students ->
-//            val adapter = StudentAdapter( students, {
-//                val intent = Intent(this, EditActivity::class.java).putExtra("student", student)
-//                startActivity(intent)
-//            })
-//            binding.rvStudents.adapter = adapter
-//        }
-//    }
 }
